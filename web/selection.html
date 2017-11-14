@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Selection</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</style>
+</head>
+<body>
+
+<div class="container" style="padding-top: 40px;">
+	<div class="col-md-6">
+		<div class="form-group">
+			<input type="url" name="homepage" class="form-control">
+		</div>
+	</div>
+	<div class="col-md-6">
+		<h1 class="title">yo</h1>
+		<h2 class="">wow</h2>
+		<h2 class="wow">wow</h2>
+		<h2 class="wow">wow</h2>
+		<h2 class="wow">wow</h2>
+		<h2 class="wow">wow</h2>
+	</div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+var targetClass;
+
+var rightArrowParents = [];
+
+$("body").dblclick(function(e){
+	console.log(e);
+
+	$(e.target).parents().addBack().not('html').each(function() {
+	    var entry = this.tagName.toLowerCase();
+	    if (this.className) {
+	      entry += "." + this.className.replace(/ /g, '.');
+	    }
+	    rightArrowParents.push(entry);
+	});
+	alert(rightArrowParents.join(">"));
+	$(rightArrowParents.join(">")).css("color", "red");
+});
+
+$("body").click(function(e){
+	$(rightArrowParents.join(">")).css("color", "black");
+	rightArrowParents = [];
+});
+
+	
+</script>
+
+</body>
+</html>
