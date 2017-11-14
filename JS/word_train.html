@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WordTrain</title>
+</head>
+<body>
+
+	<div id="container">
+		
+	</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+  var dataList = [];
+	$.getJSON( "http://wordtrain.herokuapp.com/words/", function( data ) {
+  	$.each(data, function( index, value ) {
+  		var words_list = value.word.split("");
+  		for(var i=0; i < words_list.length-3; i++){
+  			var waste_index = Math.floor(Math.random() * words_list.length )
+  			words_list[waste_index] = "_"
+  		}
+  		console.log(words_list);
+  		$('#container').append('<h1>'+words_list.join(' ')+'</h1>');
+		});
+  });
+});
+</script>
+</body>
+</html>
